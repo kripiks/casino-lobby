@@ -1,0 +1,234 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #12121C;
+  --surface: #1E1E2E;
+  --border: #3A3A50;
+  --text: #FFF9F9;
+  --text-muted: #9A9AB0;
+  --accent: #7B3FE4;
+  --success: #2BD576;
+  --font: "M PLUS 1p", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  font-family: var(--font);
+  padding: 40px;
+}
+
+.card {
+  width: 100%;
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+  padding-bottom: 12px;
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--accent);
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 7px 0 0 12px;
+}
+
+.card-provider {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 2px 0 0 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+.logo span { color: var(--accent); }
+
+.menu {
+  display: flex;
+  gap: 24px;
+}
+.menu a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.menu a:hover { color: var(--text); }
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+.btn-login, .btn-register {
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.btn-login {
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-register {
+  color: var(--bg);
+  background: var(--success);
+}
+
+.section-title {
+  color: var(--text);
+  font-size: 20px;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+/* ---------- Баннер ---------- */
+.promo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 40px;
+  margin-bottom: 40px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, var(--accent), var(--surface));
+}
+.promo-label {
+  margin: 0;
+  color: var(--success);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+.promo-title {
+  margin: 8px 0;
+  color: var(--text);
+  font-size: 36px;
+  line-height: 1.15;
+}
+.promo-terms {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.promo-btn {
+  padding: 14px 28px;
+  font-size: 16px;
+}
+
+/* ---------- Футер ---------- */
+.footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.footer-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.age {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--text-muted);
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 13px;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-legal {
+  max-width: 640px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.card {
+  animation: rise 0.4s ease-out backwards;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(123, 63, 228, 0.4);
+}
+.btn-login, .btn-register {
+  transition: transform 0.15s, filter 0.15s, background 0.15s;
+}
+
+.btn-register:hover { filter: brightness(1.1); }
+.btn-login:hover    { background: var(--surface); }
+
+.btn-login:active,
+.btn-register:active { transform: scale(0.96); }
+
+.btn-login:focus-visible,
+.btn-register:focus-visible {
+  outline: 2px solid var(--success);
+  outline-offset: 3px;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { animation: none; }
+}
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .promo {
+    padding: 24px;
+  }
+
+  .promo-title {
+    font-size: 26px;
+  }
+
+  .games {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
